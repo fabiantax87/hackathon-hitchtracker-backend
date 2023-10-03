@@ -7,3 +7,15 @@ services:
       - "8080:8080"
     environment:
       NODE_ENV: development
+  db:
+    image: postgres:15.2
+    container_name: postgres_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: hackathon
+      POSTGRES_PASSWORD: hackathon
+      POSTGRES_DB: hackathon_hitchtrackerdb
+    volumes:
+      - ./InitDB.sql:/docker-entrypoint-initdb.d/InitDB.sql
