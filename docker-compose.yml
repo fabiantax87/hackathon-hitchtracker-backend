@@ -14,10 +14,10 @@ services:
     container_name: postgres_db
     restart: always
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
     environment:
-      POSTGRES_USER: hackathon
-      POSTGRES_PASSWORD: hackathon
-      POSTGRES_DB: hackathon_hitchtrackerdb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - ./InitDB.sql:/docker-entrypoint-initdb.d/InitDB.sql
